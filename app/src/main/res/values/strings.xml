@@ -14,4 +14,5 @@
     <string name="title_activity_medecin_home">MedecinHomeActivity</string>
     <string name="title_activity_liste_patients">listePatients</string>
     <string name="title_activity_liste_medecin">listeMedecin</string>
+    <string name="title_activity_liste_invitations">ListeInvitations</string>
 </resources>

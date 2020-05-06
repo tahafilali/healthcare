@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ListeInvitations"
+            android:label="@string/title_activity_liste_invitations"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".listeMedecin"
             android:label="@string/title_activity_liste_medecin"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".listePatients"
             android:label="@string/title_activity_liste_patients"
