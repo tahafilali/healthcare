@@ -27,16 +27,18 @@ public class listePatients extends AppCompatActivity {
     private ArrayList<Patient> arrayList;
     private FirebaseRecyclerOptions<Patient> options;
     private FirebaseRecyclerAdapter<Patient, PatientViewHolder> adapter;
-    EditText search;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_liste_patients);
-        search = findViewById(R.id.search);
+        setContentView(R.layout.content_liste_patients);
+
         list = findViewById(R.id.recycle);
         ref = FirebaseDatabase.getInstance().getReference().child("Patients");
         list.setHasFixedSize(true);
         list.setLayoutManager(new LinearLayoutManager(listePatients.this));
+
+
         arrayList = new ArrayList<Patient>();
         options = new FirebaseRecyclerOptions.Builder<Patient>().setQuery(ref,Patient.class).build();
 
@@ -44,12 +46,13 @@ public class listePatients extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull PatientViewHolder holder, int position, @NonNull Patient model) {
                 holder.name.setText(model.getNom().toString()+" "+model.getPrenom().toString());
+
             }
 
             @NonNull
             @Override
             public PatientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return new PatientViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.row,parent,false));
+                return new PatientViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.row_patient,parent,false));
             }
         };
         list.setAdapter(adapter);
