@@ -54,6 +54,7 @@ public class listeMedecin extends AppCompatActivity {
     Dialog dialog;
     String key;
     Patient p ;
+    String medId="";
     DatabaseReference ref2;
     DatabaseReference ref3;
     @Override
@@ -154,14 +155,15 @@ public class listeMedecin extends AppCompatActivity {
                               dialog.cancel();
                             }
                         });
+                        final String[] finalMedId = {medId};
                         btn1.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
-                                String medId="";
+
                               for(int i = 0;i<arrayList.size();i++){
                                   if (mHolder.med.getEmail().equals(arrayList.get(i).getEmail())){
-                                      medId = arrayKeys.get(i);
+                                      finalMedId[0] = arrayKeys.get(i);
                                   }
                               }
 
@@ -169,6 +171,7 @@ public class listeMedecin extends AppCompatActivity {
                                   @Override
                                   public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                       p = dataSnapshot.getValue(Patient.class);
+                                      ref2.child("Invitations").child(finalMedId[0]).child(user.getUid().toString()).setValue(p);
                                   }
 
                                   @Override
@@ -176,7 +179,7 @@ public class listeMedecin extends AppCompatActivity {
 
                                   }
                               });
-                                ref2.child("Invitations").child(medId).child(user.getUid().toString()).setValue(p);
+
 
 
 
