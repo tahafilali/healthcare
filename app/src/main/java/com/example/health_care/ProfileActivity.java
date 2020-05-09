@@ -68,7 +68,7 @@ public class ProfileActivity extends AppCompatActivity {
                 profile_nom.setText(patient.getNom()+" "+patient.getPrenom());
                 profile_addresse.setText(patient.getAdresse());
                 profile_tel.setText(patient.getTel());
-                if(patient.getSituationFamiliale())
+                if(patient.isSituationFamiliale()==true)
                     profile_sf.setText("Marié");
                 else
                     profile_sf.setText("Single");
@@ -232,7 +232,7 @@ public class ProfileActivity extends AppCompatActivity {
                 ancien=(TextView) mView.findViewById(R.id.ancien);
 
                 titre.setText("Modifier Situation familiale");
-                if(patient.getSituationFamiliale()==true)
+                if(patient.isSituationFamiliale()==true)
                 ancien.setText("SF: Marié");
                 else
                     ancien.setText("SF: Single");

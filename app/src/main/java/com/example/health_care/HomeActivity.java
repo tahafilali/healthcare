@@ -29,7 +29,7 @@ private CardView search;
         profil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+                startActivity(new Intent(HomeActivity.this,ProfileActivity.class));
             }
         });
 
