@@ -12,6 +12,8 @@ import android.view.View;
 
 public class HomeActivity extends AppCompatActivity {
 private CardView search;
+    private CardView profil;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +23,13 @@ private CardView search;
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, listeMedecin.class));
+            }
+        });
+        profil = findViewById(R.id.profil);
+        profil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
             }
         });
 
