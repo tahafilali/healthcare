@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class PatientViewHolder extends RecyclerView.ViewHolder {
     public TextView name;
+    public Patient patient;
+
     public PatientViewHolder(View itemView){
         super(itemView);
         name = itemView.findViewById(R.id.name);

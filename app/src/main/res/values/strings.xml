@@ -15,4 +15,10 @@
     <string name="title_activity_liste_patients">listePatients</string>
     <string name="title_activity_liste_medecin">listeMedecin</string>
     <string name="title_activity_liste_invitations">ListeInvitations</string>
+    <string name="title_activity_dossier_medical_main">DossierMedicalMain</string>
+    <string name="tab_text_1">Patient\'s profile</string>
+    <string name="tab_text_2">Medical Records</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
