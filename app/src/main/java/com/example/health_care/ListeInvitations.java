@@ -5,6 +5,7 @@ import android.app.VoiceInteractor;
 import android.os.Bundle;
 
 import com.example.health_care.models.MedecinViewHolder;
+import com.example.health_care.models.MedicalFolder;
 import com.example.health_care.models.Patient;
 import com.example.health_care.models.PatientViewHolder;
 import com.example.health_care.models.RequestViewHolder;
@@ -133,12 +134,15 @@ public class ListeInvitations extends AppCompatActivity {
                            @Override
                            public void onClick(View v) {
 
+
                                Patient p = mHolder.patient;
                                for(int i = 0;i<arrayList.size();i++){
                                    if (p.getEmail().equals(arrayList.get(i).getEmail())){
                                        finalMedId[0] = arrayKeys.get(i);
                                    }
                                }
+                               MedicalFolder m = new MedicalFolder("0","0","0","0","0","0","nothing","nothing");
+                               ref2.child("Dossier Medical").child(finalMedId[0]).setValue(m);
                                ref2.child("Invitations accepter").child(user.getUid().toString()).child(finalMedId[0]).setValue(p).addOnCompleteListener(new OnCompleteListener<Void>() {
                                    @Override
                                    public void onComplete(@NonNull Task<Void> task) {

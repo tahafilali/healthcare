@@ -8,20 +8,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/search"
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:fontFamily="@font/fonts"
-            android:textColor="@color/colorPrimaryDark"
-            android:textColorHint="@color/colorPrimaryDark"
-            android:padding="10dp"
-            android:text="Patients list"
-            android:background="@drawable/border"
-            android:paddingBottom="6dp"
+            android:id="@+id/toolbar"
+            android:elevation="4dp"
+            android:background="@color/colorPrimary"
 
-            />
+            android:theme="@style/AppTheme.AppBarOverlay"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycle"
             android:layout_width="match_parent"

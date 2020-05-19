@@ -13,6 +13,7 @@ import android.view.View;
 public class HomeActivity extends AppCompatActivity {
 private CardView search;
     private CardView profil;
+    private CardView DM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,13 @@ private CardView search;
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this,ProfileActivity.class));
+            }
+        });
+        DM = findViewById(R.id.DM);
+        DM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,DossierMedical.class));
             }
         });
 

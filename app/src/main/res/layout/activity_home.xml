@@ -64,6 +64,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/DM"
             android:layout_width="150dp"
             android:layout_margin="10dp"
             android:layout_height="130dp"
@@ -119,7 +120,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_search_black_24dp"
+                    android:src="@drawable/search"
                     />
                 <TextView
                     android:layout_width="match_parent"

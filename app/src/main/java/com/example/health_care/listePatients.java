@@ -14,17 +14,23 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 
@@ -49,6 +55,9 @@ public class listePatients extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_liste_patients);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Patients list");
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
@@ -78,7 +87,50 @@ public class listePatients extends AppCompatActivity {
 
             }
         });
-        options = new FirebaseRecyclerOptions.Builder<Patient>().setQuery(ref,Patient.class).build();
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        searching("");
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main,menu);
+        MenuItem item = menu.findItem(R.id.search_bar);
+        SearchView searchView = (SearchView) item.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                adapter.stopListening();
+                searching(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.stopListening();
+                searching(newText);
+                adapter.startListening();
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+    private void searching(String search){
+        Query q = ref.orderByChild("nom").startAt(search).endAt(search+"\uf8ff");
+        options = new FirebaseRecyclerOptions.Builder<Patient>().setQuery(q,Patient.class).build();
 
         adapter = new FirebaseRecyclerAdapter<Patient, PatientViewHolder>(options) {
             @Override
@@ -100,7 +152,7 @@ public class listePatients extends AppCompatActivity {
                         Patient p = pHolder.patient;
                         for (int i = 0;i<arrayList.size();i++){
                             if (arrayList.get(i).getEmail().toString().equals(p.getEmail().toString())){
-                               id = arrayKeys.get(i).toString();
+                                id = arrayKeys.get(i).toString();
                             }
                         }
                         Intent i = new Intent(listePatients.this,DossierMedicalMain.class);
@@ -113,18 +165,5 @@ public class listePatients extends AppCompatActivity {
             }
         };
         list.setAdapter(adapter);
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        adapter.stopListening();
     }
 }
