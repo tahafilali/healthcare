@@ -24,6 +24,7 @@
         android:textColorHint="@color/colorPrimaryDark"
         android:layout_marginTop="80dp"
         android:hint="Login..."
+        android:text=""
         android:drawableStart="@drawable/ic_person_outline_black_24dp"
         android:background="@drawable/border"
         android:inputType="textEmailAddress"
@@ -36,6 +37,7 @@
         android:layout_marginLeft="85dp"
         android:layout_marginRight="85dp"
         android:fontFamily="@font/fonts"
+        android:text=""
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
         android:layout_marginTop="40dp"
@@ -55,6 +57,7 @@
         android:layout_marginLeft="80dp"
         android:buttonTint="@color/colorPrimary"
         android:layout_marginTop="10dp"
+        android:visibility="gone"
         />
     <Button
         android:id="@+id/connect"
@@ -91,6 +94,17 @@
         android:background="@drawable/border"
         android:fontFamily="@font/fonts"
         android:layout_gravity="center"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:visibility="gone"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.Holo.ProgressBar"
+        android:layout_width="match_parent"
+        android:scrollbarSize="100dp"
+        android:layout_marginTop="200dp"
+        android:layout_height="wrap_content"
+       android:progressTint="@color/colorPrimary"
+    />
 
 </LinearLayout>

@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".MedecinProfil"
+            android:label="@string/title_activity_medecin_profil"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".DossierMedical"
             android:label="@string/title_activity_dossier_medical"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DossierMedicalMain"
             android:label="@string/title_activity_dossier_medical_main"
